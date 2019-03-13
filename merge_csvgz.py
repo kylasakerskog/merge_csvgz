@@ -3,6 +3,7 @@ import sys
 
 file_name = sys.argv[1] #ファイルの名前(数字を含まない)
 max_file_num =  int(sys.argv[2]) #ファイルの数字の最大値
+output_file_name = sys.argv[3]
 
 df_list = []
 data = pd.read_csv(file_name  + '000000000000.csv.gz', header=None, nrows=1, compression='gzip') 
@@ -18,4 +19,4 @@ data2 = pd.concat(df_list)
 data2.columns = columns_name
 data2 = data2.reset_index(drop=True)
 
-data2.to_csv('result.csv.gz', compression='gzip')
+data2.to_csv(output_file_name + '.csv.gz', compression='gzip')
